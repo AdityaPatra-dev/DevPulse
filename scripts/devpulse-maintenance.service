@@ -1,0 +1,13 @@
+[Unit]
+Description=DevPulse Maintenance Service
+After=network.target
+
+[Service]
+Type=simple
+User=root
+ExecStart=/opt/devpulse/scripts/devpulse_maintenance.sh
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
