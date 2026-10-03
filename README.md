@@ -292,11 +292,10 @@ make test
 
 ---
 
-## 📋 Comprehensive Execution Checklist
+## 📋 Documentation & Guides
 
-For full step-by-step instructions on setting up KVM, configuring Netplan static IP, setting up AWS Budgets, launching EC2, capturing the 24 required screenshots, recording the demo video, and completing teardown, see:
-
-👉 **[Master Project Execution Guide](PROJECT_EXECUTION_GUIDE.md)**
+- 📖 **[Codebase & Architectural Deep Dive](CODEBASE_DEEP_DIVE.md):** Complete module-by-module, file-by-file technical walkthrough and prerequisites.
+- 🚀 **[Master Project Execution Guide](PROJECT_EXECUTION_GUIDE.md):** Hands-on step-by-step instructions for KVM, AWS EC2, evidence screenshots, chaos test, and teardown.
 
 ---
 
