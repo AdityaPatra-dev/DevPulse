@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 320" width="100%" height="320">
+  <defs>
+    <linearGradient id="dash-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+
+    <linearGradient id="panel-bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1f293d" />
+      <stop offset="100%" stop-color="#141c2e" />
+    </linearGradient>
+
+    <linearGradient id="chart-green" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#22c55e" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#22c55e" stop-opacity="0.0"/>
+    </linearGradient>
+
+    <linearGradient id="chart-cyan" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.0"/>
+    </linearGradient>
+
+    <style>
+      @keyframes wave-anim {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-4px); }
+      }
+      .wave {
+        animation: wave-anim 4s ease-in-out infinite;
+      }
+      .panel-header {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        font-size: 11.5px;
+        font-weight: 700;
+        fill: #94a3b8;
+        letter-spacing: 0.5px;
+      }
+      .panel-val {
+        font-family: monospace;
+        font-size: 22px;
+        font-weight: bold;
+      }
+    </style>
+  </defs>
+
+  <!-- Frame -->
+  <rect width="880" height="320" rx="14" fill="url(#dash-bg)" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- Top Grafana Navigation Bar Mock -->
+  <rect x="0" y="0" width="880" height="38" rx="14" fill="#0f172a" />
+  <rect x="0" y="24" width="880" height="14" fill="#0f172a" />
+  <circle cx="25" cy="19" r="6" fill="#f97316" />
+  <text x="40" y="23" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12.5" font-weight="bold">DevPulse Track B — Observability Dashboard</text>
+  <rect x="750" y="8" width="115" height="22" rx="4" fill="#1e293b" />
+  <text x="807" y="22" text-anchor="middle" fill="#38bdf8" font-family="monospace" font-size="10.5">● LIVE (5s)</text>
+
+  <!-- Grid of 4 Panels -->
+
+  <!-- Panel 1: Request Rate (req/sec) -->
+  <g transform="translate(15, 50)">
+    <rect width="200" height="120" rx="8" fill="url(#panel-bg)" stroke="#334155" stroke-width="1"/>
+    <text x="14" y="24" class="panel-header">1. REQUEST RATE</text>
+    <text x="14" y="55" fill="#38bdf8" class="panel-val">42.8 <tspan font-size="11" fill="#94a3b8">req/s</tspan></text>
+    <!-- Sparkline Chart -->
+    <path d="M 14,105 Q 40,85 70,95 T 120,75 T 160,85 T 186,70 L 186,110 L 14,110 Z" fill="url(#chart-cyan)" />
+    <path d="M 14,105 Q 40,85 70,95 T 120,75 T 160,85 T 186,70" fill="none" stroke="#38bdf8" stroke-width="2" class="wave" />
+  </g>
+
+  <!-- Panel 2: Error Rate (%) -->
+  <g transform="translate(230, 50)">
+    <rect width="200" height="120" rx="8" fill="url(#panel-bg)" stroke="#334155" stroke-width="1"/>
+    <text x="14" y="24" class="panel-header">2. ERROR RATE</text>
+    <text x="14" y="55" fill="#22c55e" class="panel-val">0.02 <tspan font-size="11" fill="#94a3b8">%</tspan></text>
+    <!-- Flat Healthy Green Line -->
+    <path d="M 14,105 L 186,105 L 186,110 L 14,110 Z" fill="url(#chart-green)" />
+    <line x1="14" y1="105" x2="186" y2="105" stroke="#22c55e" stroke-width="2"/>
+    <text x="14" y="95" fill="#4ade80" font-family="monospace" font-size="10">Threshold: &lt; 1.0% (OK)</text>
+  </g>
+
+  <!-- Panel 3: p95 Request Latency (seconds) -->
+  <g transform="translate(445, 50)">
+    <rect width="200" height="120" rx="8" fill="url(#panel-bg)" stroke="#334155" stroke-width="1"/>
+    <text x="14" y="24" class="panel-header">3. p95 LATENCY</text>
+    <text x="14" y="55" fill="#818cf8" class="panel-val">12.4 <tspan font-size="11" fill="#94a3b8">ms</tspan></text>
+    <!-- Latency Curve -->
+    <path d="M 14,100 Q 50,92 90,88 T 140,84 T 186,80 L 186,110 L 14,110 Z" fill="#4338ca" opacity="0.3"/>
+    <path d="M 14,100 Q 50,92 90,88 T 140,84 T 186,80" fill="none" stroke="#818cf8" stroke-width="2"/>
+  </g>
+
+  <!-- Panel 4: Container CPU & Memory -->
+  <g transform="translate(660, 50)">
+    <rect width="205" height="120" rx="8" fill="url(#panel-bg)" stroke="#334155" stroke-width="1"/>
+    <text x="14" y="24" class="panel-header">4. CONTAINER CPU &amp; RAM</text>
+    <text x="14" y="55" fill="#f59e0b" class="panel-val">4.2% <tspan font-size="12" fill="#94a3b8">/ 78MB</tspan></text>
+    <!-- CPU Progress Bar -->
+    <rect x="14" y="75" width="175" height="10" rx="5" fill="#334155" />
+    <rect x="14" y="75" width="45" height="10" rx="5" fill="#f59e0b" />
+    <!-- Memory Progress Bar -->
+    <rect x="14" y="95" width="175" height="10" rx="5" fill="#334155" />
+    <rect x="14" y="95" width="60" height="10" rx="5" fill="#38bdf8" />
+  </g>
+
+  <!-- Bottom Notification Bar: Alert Rule Simulation -->
+  <g transform="translate(15, 185)">
+    <rect width="850" height="115" rx="8" fill="#0f172a" stroke="#1e293b" stroke-width="1.2"/>
+    <circle cx="35" cy="40" r="10" fill="#22c55e" opacity="0.2"/>
+    <circle cx="35" cy="40" r="5" fill="#22c55e" />
+    <text x="60" y="44" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="14" font-weight="bold">Prometheus Alert Rule: [DevPulseApplicationDown]</text>
+    <text x="60" y="66" fill="#94a3b8" font-family="monospace" font-size="11.5">Expression: up{job="devpulse-app"} == 0 | For: 1m | Severity: critical</text>
+    <text x="60" y="88" fill="#4ade80" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12">State: NORMAL (Firing triggers automated incident logging &amp; chaos demonstration)</text>
+  </g>
+</svg>

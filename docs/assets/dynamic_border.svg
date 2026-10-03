@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 24" width="100%" height="24">
+  <defs>
+    <!-- Dynamic Glowing Gradients -->
+    <linearGradient id="border-grad-1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0" />
+      <stop offset="20%" stop-color="#38bdf8" stop-opacity="1" />
+      <stop offset="50%" stop-color="#818cf8" stop-opacity="1" />
+      <stop offset="80%" stop-color="#4ade80" stop-opacity="1" />
+      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0" />
+    </linearGradient>
+
+    <linearGradient id="beam-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0" />
+      <stop offset="50%" stop-color="#38bdf8" stop-opacity="1" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+    </linearGradient>
+
+    <!-- Neon Glow Filter -->
+    <filter id="border-glow" x="-20%" y="-100%" width="140%" height="300%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <style>
+      @keyframes beam-slide {
+        0% { transform: translateX(-400px); }
+        100% { transform: translateX(900px); }
+      }
+
+      @keyframes pulse-center {
+        0%, 100% { transform: scale(1); opacity: 0.8; filter: drop-shadow(0 0 4px #38bdf8); }
+        50% { transform: scale(1.3); opacity: 1; filter: drop-shadow(0 0 10px #4ade80); }
+      }
+
+      @keyframes dash-stream {
+        to { stroke-dashoffset: -100; }
+      }
+
+      .running-beam {
+        animation: beam-slide 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+      }
+
+      .center-gem {
+        animation: pulse-center 2s ease-in-out infinite;
+        transform-origin: 450px 12px;
+      }
+
+      .stream-line {
+        stroke-dasharray: 12, 18;
+        animation: dash-stream 2s linear infinite;
+      }
+    </style>
+  </defs>
+
+  <!-- Background Base Track -->
+  <line x1="0" y1="12" x2="900" y2="12" stroke="#1e293b" stroke-width="1.5" />
+
+  <!-- Animated Steaming Circuit Line -->
+  <line x1="20" y1="12" x2="880" y2="12" stroke="url(#border-grad-1)" stroke-width="2" class="stream-line" filter="url(#border-glow)"/>
+
+  <!-- High-Speed Running Neon Beam -->
+  <g class="running-beam">
+    <line x1="0" y1="12" x2="250" y2="12" stroke="url(#beam-grad)" stroke-width="3" filter="url(#border-glow)" />
+    <circle cx="250" cy="12" r="2.5" fill="#ffffff" filter="url(#border-glow)" />
+  </g>
+
+  <!-- Tech Wing Accents Left & Right -->
+  <path d="M 0 12 L 30 12 L 40 4 L 70 4" fill="none" stroke="#38bdf8" stroke-width="1.5" opacity="0.7"/>
+  <path d="M 900 12 L 870 12 L 860 4 L 830 4" fill="none" stroke="#4ade80" stroke-width="1.5" opacity="0.7"/>
+
+  <!-- Tech Nodes -->
+  <circle cx="70" cy="4" r="2" fill="#38bdf8" />
+  <circle cx="830" cy="4" r="2" fill="#4ade80" />
+  <circle cx="150" cy="12" r="2" fill="#818cf8" opacity="0.8"/>
+  <circle cx="750" cy="12" r="2" fill="#818cf8" opacity="0.8"/>
+
+  <!-- Center Diamond Tech Core -->
+  <g class="center-gem">
+    <polygon points="450,4 458,12 450,20 442,12" fill="#38bdf8" stroke="#ffffff" stroke-width="1" />
+    <circle cx="450" cy="12" r="2" fill="#ffffff" />
+  </g>
+</svg>
