@@ -40,6 +40,15 @@ COPY --chown=appuser:devpulse app/ ./app
 # Drop root privileges
 USER appuser
 
+# Standard OCI Image Annotations & Metadata
+LABEL org.opencontainers.image.title="DevPulse Application Service" \
+      org.opencontainers.image.description="Cloud-native service health and incident tracking platform with Prometheus observability" \
+      org.opencontainers.image.version="1.0.0" \
+      org.opencontainers.image.vendor="DevPulse" \
+      org.opencontainers.image.authors="Aditya Patra" \
+      org.opencontainers.image.source="https://github.com/AdityaPatra-dev/DevPulse" \
+      org.opencontainers.image.licenses="MIT"
+
 # Expose internal HTTP port
 EXPOSE 8000
 

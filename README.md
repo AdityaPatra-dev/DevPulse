@@ -14,7 +14,9 @@
   <a href="https://github.com/AdityaPatra-dev/DevPulse/actions/workflows/ci.yml">
     <img src="docs/assets/cicd_pipeline_sticker.svg" alt="CI/CD Pipeline Passing" height="28">
   </a>
-  <img src="https://img.shields.io/badge/Track-B%20(Watch%20It)-6366f1?style=flat&logo=target" alt="Track B" height="28">
+  <a href="https://hub.docker.com/r/adityapatra/devpulse">
+    <img src="https://img.shields.io/badge/Docker%20Hub-adityapatra%2Fdevpulse-2496ED?style=flat&logo=docker&logoColor=white" alt="Docker Hub" height="28">
+  </a>
   <img src="https://img.shields.io/badge/Docker%20Image-%3C%20250%20MB%20(78%20MB)-0284c7?style=flat&logo=docker" alt="Docker Size" height="28">
   <img src="https://img.shields.io/badge/AWS%20EC2-t3.micro%20(ap--south--1)-ff9900?style=flat&logo=amazon-aws" alt="AWS EC2" height="28">
   <img src="https://img.shields.io/badge/Hypervisor-KVM%20%2F%20virt--manager-818cf8?style=flat&logo=linux" alt="KVM" height="28">
@@ -149,7 +151,7 @@ docker start devpulse_app
 | **Backend** | Python 3.12, FastAPI, SQLAlchemy 2.0 | Asynchronous HTTP service, Pydantic v2 schemas, database migrations. |
 | **Database** | PostgreSQL 16 (Alpine) | Persistent named volume `devpulse_postgres_data`, `pg_isready` healthcheck. |
 | **Proxy** | Nginx 1.25 (Alpine) | Reverse proxy, static buffering, port 80 binding, security header injection. |
-| **Container** | Docker Engine &amp; Compose | Multi-stage build, pinned `python:3.12-slim-bookworm`, non-root user `appuser` (UID 10001), size **78 MB** (<250 MB constraint). |
+| **Container** | Docker Engine &amp; Compose | Multi-stage build, pinned `python:3.12-slim-bookworm`, non-root user `appuser` (UID 10001), size **78 MB** (<250 MB constraint). Published on [Docker Hub](https://hub.docker.com/r/adityapatra/devpulse) (`adityapatra/devpulse`). |
 | **Observability**| Prometheus, Grafana, cAdvisor, node_exporter | Auto-provisioned datasources and dashboards, scrape interval 10s. |
 | **Hypervisor** | KVM / QEMU, `virt-manager`, `virsh` | Local Ubuntu Live Server 26 VM with static IP, port 2222 SSH hardening, UFW. |
 | **Cloud** | AWS EC2 `t3.micro` | Region `ap-south-1` (Mumbai), SSH locked to `/32` IP, Free Tier zero-spend budget. |
@@ -295,6 +297,7 @@ make test
 ## 📋 Documentation & Guides
 
 - 📖 **[Codebase & Architectural Deep Dive](CODEBASE_DEEP_DIVE.md):** Complete module-by-module, file-by-file technical walkthrough and prerequisites.
+- 🐳 **[Docker & Container Registry Reference](DOCKER.md):** Official Docker Hub repository specs, OCI labels, security compliance, and standalone run commands.
 - 🚀 **[Master Project Execution Guide](PROJECT_EXECUTION_GUIDE.md):** Hands-on step-by-step instructions for KVM, AWS EC2, evidence screenshots, chaos test, and teardown.
 
 ---
